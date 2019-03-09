@@ -1,0 +1,10 @@
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\obj\Debug\SharpInterface.Okno.resources
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\obj\Debug\SharpInterface.Properties.Resources.resources
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\obj\Debug\SharpInterface.csproj.GenerateResource.cache
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\obj\Debug\SharpInterface.csproj.CoreCompileInputs.cache
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\bin\Debug\SharpInterface.exe.config
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\bin\Debug\SharpInterface.exe
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\bin\Debug\SharpInterface.pdb
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\obj\Debug\SharpInterface.exe
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\obj\Debug\SharpInterface.pdb
+C:\Users\Murloc\Dysk Google\C++\Useful\SharpInterface\SharpInterface\obj\Debug\SharpInterface.csprojAssemblyReference.cache

@@ -1,0 +1,9 @@
+Program wypisze wszystkie parzyste lub nieparzyste liczby znajdujace sie w podanym przedziale <a;b>
+
+Podaj parzystosc:
+p (lub e) - parzyste
+n (lub o) - nieparzyste
+
+Podaj przedzial <a;b>:
+Podaj a:
+Podaj b:
