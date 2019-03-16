@@ -8,27 +8,28 @@ bool nolog = false, nopause = false, timer = false;
 
 bool ExtendedEuclidean(long long a, long long b, long long &x)
 {
-    long long /*x, */y, u = y = 0, v = 1,
+    long long y, u = y = 0, v = 1,
          bcopy = b;
     //If they're negative, make them positive. Cast 'depression-away' spell on 'em
     a = a < 0 ? -a : a;
     b = b < 0 ? -b : b;
-
+    if (a < b)
+    {
+        swap(a, b);
+        swap(x, u);
+        swap(y, v);
+    }
     while (b)
     {
-        if (a < b) 
-        {
-            swap(a, b);
-            swap(x, u);
-            swap(y, v);
-        }
-        if (!b) break;
         long long q = a/b;
         a %= b;
         x -= u * q;
         y -= v * q;
+        swap(a, b);
+        swap(x, u);
+        swap(y, v);
     }
-    if (x < 0) x += bcopy; // add to proof
+    if (x < 0) x += bcopy;
     if (a == 1) return true;
     return false;
 }
@@ -87,13 +88,19 @@ int main(int argc, char *args[])
         "a := a - q * b\n"
         "xa + yb := xa + yb - q(ua + vb) => x := x - qu,   y := y - qv\n\n"
         "Jezeli NWD(a,b) bedzie rowne 1, na koncu zostanie nam liczba x badz u, ktora bedzie szukanym minimalnym "
-        "wspolczynnikiem Bezouta liczb a i b. Twierdzenie, ze jest to minimalny czynnik mozna udowodnic poprzez indukcje, nie "
+        "wspolczynnikiem Bezouta liczb a i b. Twierdzenie, ze jest to minimalny wspolczynnik mozna udowodnic poprzez indukcje, nie "
         "bede poszerzal i tak juz obszernego dowodu o ten element, dosc intuicyjne powinno wydawac sie, ze produktem "
-        "odejmowanie liczb zapisanych w postaci sumy minimalnych czynnikow Bezouta daje nam liczbe zapisana w postaci "
-        "minimalnych czynnikow Bezouta. Dlaczego to jest wazne? Poniewaz w takim razie x < a, czyli x nigdy nie "
+        "odejmowanie liczb zapisanych w postaci sumy minimalnych wspolczynnikow Bezouta daje nam liczbe zapisana w postaci "
+        "minimalnych wspolczynnikow Bezouta. Dlaczego to jest wazne? Poniewaz wtedy zawsze prawda jest, ze x < a, czyli x nigdy nie "
         "wyjdzie poza zakres typu danych. Dowod ze ax mod b = 1:\n"
         "xa + yb = 1 <=> xa = 1 - yb, stad\n"
-        "xa mod b = (1 - yb) mod b = (1 mod b - yb mod b) mod b = (1 - 0) mod b = 1 mod b = 1\n\n";
+        "xa mod b = (1 - yb) mod b = (1 mod b - yb mod b) mod b = (1 - 0) mod b = 1 mod b = 1\n\n"
+        "Zalozmy ze naszym szukanym wspolczynnikiem okazalo sie byc x, ktore jest ujemne\n"
+        "Komputery licza modulo z ujemnych liczb, ale dla nas latwiej byloby znac dodatnia odwrotnosc modulo\n"
+        "Jezeli jest to minimalny wspolczynik Bezouta, to wiemy, ze |x| < b, zatem istnieje takie k < b, ze x = b - k\n"
+        "ax mod b = x(b - z) mod b = (xb - xz) mod b = -xz mod b = 1\n"
+        "Zobaczmy jak zmieni sie sytuacja po dodaniu b (co zapewnia ze liczba bedzie dodatnia) do wartosci x:\n"
+        "ax mod b = x(2b - z) mod b = (2xb - xz) mod b = -xz mod b = 1";
         
     if (!nolog) cout << "Podaj dwie liczby a i b, a program obliczy odwrotnosc modulo b liczby a, jezeli istnieje\n"
         << "Podaj a:\n";

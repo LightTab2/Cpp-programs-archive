@@ -1,2 +1,2 @@
 # C++ programs archive
-Tiny programs, perharps important only to me. Shall any of those programs grow significant or be of somebody's interest (please open an issue if it is), I will make exclusive repository for it. Well, since it's uncopyrighted you could do this on your own as well. I'd be glad if you inform me, if it's open-source. I might want to continue to contribute.
+Tiny programs, perharps important only to me. Shall any of those programs grow significant or be of somebody's interest (please open an issue, if it is), I will make an exclusive repository for it. Well, since it's uncopyrighted you could do this on your own as well. I'd be glad if you inform me, if it's open-source. I might want to continue to contribute.
