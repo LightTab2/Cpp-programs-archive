@@ -2,6 +2,7 @@
 #include <cmath>
 #include <chrono>
 #include <cstring>
+#include <list>
 using namespace std;
 
 bool nolog = false, nopause = false, timer = false;
@@ -14,7 +15,8 @@ int main(int argc, char *args[])
         else if (!strcmp(args[x], "-nopause")) nopause = true;
         else if (!strcmp(args[x], "-time")) timer = true;
     }
-    unsigned long long n;
+    unsigned long long n, quantity = 3;
+    list<unsigned long long> primes;
     if (!nolog) cout << "Tresc zadania, ktore ten program rozwiazuje to:\n"
         "Znajdz n kolejnych liczb pierwszych.\n"
         "Rozwiazanie: Pierw wyelminuje wszystkie liczby podzielne przez 2 i 3 (nieliczac ich), czyli:\n"
@@ -30,11 +32,36 @@ int main(int argc, char *args[])
     if (!nolog) cout << "Podaj liczbe naturalna n:\n";
     cin >> n;
     cout << endl;
-
+    
     if (!nolog) cout << n << " kolejnych liczb pierwszych to:\n";
     chrono::time_point<chrono::high_resolution_clock> start, stop;
     if (timer) start = chrono::high_resolution_clock::now();
-        
+
+    if (n > 2) cout << 1 << ' ' << 2 << ' ' << 3;  
+    else if (n == 2) cout << 1 << ' ' << 2;
+    else if (n) cout << 1;  
+    
+    unsigned long long checked = 5;
+    bool add_mode = false;
+    if (quantity < n) while (quantity != n)
+    {
+        unsigned long long square_root = static_cast<unsigned long long>(sqrt(checked));
+        auto it = primes.cbegin();
+        while (*it <= square_root) //check if number is prime
+        {
+            if (it == primes.cend() || !(checked % *it)) break;
+            ++it;
+        }
+        if (it == primes.cend() || *it > square_root) //it is prime
+        {
+            cout << ' ' << checked;
+            primes.push_back(checked);
+            ++quantity;
+        }
+        checked += add_mode ? 4 : 2; //if checked is '6k - 1' add 2 and get '6k + 1'; if checked is '6k + 1' add 4 and get '6(k+1) - 1'
+        add_mode = !add_mode;
+    }
+
     if (timer) stop = chrono::high_resolution_clock::now();
     cout << endl;
     if (timer)
