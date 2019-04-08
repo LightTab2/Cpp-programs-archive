@@ -43,6 +43,7 @@
 *.user
 *.bat
 *.ipch
+*.filters
 
 #Vim backups
 *~
