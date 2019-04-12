@@ -72,7 +72,7 @@ int main(int argc, char *args[])
 				//find another <tag> if crossed one
 				if (pos[0] != string::npos && pos[1] > pos[0])
 				{
-					if (pos[1] = buffer.find(' ', pos[2] + 1u) == string::npos)
+					if ((pos[1] = buffer.find(' ', pos[2] + 1u)) == string::npos)
 					{
 						if (!newline) newline = true;
 						else output << '\n';
