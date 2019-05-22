@@ -61,7 +61,7 @@ int main(int argc, char *args[])
 
     if (!nolog) cout << "Podaj liczbe naturalna b:\n";
 	cin >> interval.max;
-    while (interval.min < interval.max)
+    while (interval.min > interval.max)
     {
         if (!nolog) cout << "\nPrzedzial nie moze sie konczyc mniejsza liczba niz sie zaczyna, sproboj ponownie:\n";
         cin >> interval.max;

@@ -7,7 +7,8 @@ const char *FILES[][2]
 	{"Edytory_Tekstow/Vim.html",                    "../LightTab2.github.io/_includes/tutorials/Edytory_Tekstow/Vim.html"},
 	{"WebDev/HTML.html",                            "../LightTab2.github.io/_includes/tutorials/WebDev/HTML.html"},
 	{"Internet/Niebezpieczenstwa/Meltdown.html",    "../LightTab2.github.io/_includes/descriptions/Internet/Niebezpieczenstwa/Meltdown.html"},
-	{"WebDev/LaTeX.html",                           "../LightTab2.github.io/_includes/tutorials/WebDev/LaTeX.html"}
+	{"WebDev/LaTeX.html",                           "../LightTab2.github.io/_includes/tutorials/WebDev/LaTeX.html"},
+	{"WebDev/SQL.html",                             "../LightTab2.github.io/_includes/tutorials/WebDev/SQL.html"}
 };
 
 /*

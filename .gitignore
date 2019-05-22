@@ -44,6 +44,8 @@
 *.bat
 *.ipch
 *.filters
+*.ide
+*.ide-shm
 
 #Vim backups
 *~
