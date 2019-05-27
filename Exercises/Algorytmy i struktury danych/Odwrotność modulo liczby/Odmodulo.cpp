@@ -78,8 +78,8 @@ int main(int argc, char *args[])
         "a = xa + yb, na poczatku x = 1, y = 0\n"
         "b = ua + vb, na poczatku u = 0, v = 1\b"
         "Czyli gdy sprowadzimy nasze a lub b do NWD(a,b) na miejsce x,y lub u,v wskocza takie liczby, ze spelnione "
-        "bedzie xa + yb = NWD(a,b) lub ua + vb = NWD(a,b). Jezeli NWD(a,b) = 1, to liczba posiada odwortnosc modulo"
-        "liczymy NWD(a,b), jak w normalnym algorytmie i stosujemy takie same operacje na wyrazeniu xa + yb i ua + vb, czyli:\n"
+        "bedzie xa + yb = NWD(a,b) lub ua + vb = NWD(a,b). Jezeli NWD(a,b) = 1, to liczba posiada odwortnosc modulo i "
+        "liczymy NWD(a,b), jak w normalnym algorytmie, stosujac takie same operacje na wyrazeniu xa + yb i ua + vb, czyli:\n"
         "Jezeli b>a liczymy q = b/a, w przeciwnym wypadku q=a/b\n"
         "Jezeli b>a:\n"
         "b := b - q * a\n"
@@ -100,7 +100,7 @@ int main(int argc, char *args[])
         "Jezeli jest to minimalny wspolczynik Bezouta, to wiemy, ze |x| < b, zatem istnieje takie k < b, ze x = b - k\n"
         "ax mod b = x(b - z) mod b = (xb - xz) mod b = -xz mod b = 1\n"
         "Zobaczmy jak zmieni sie sytuacja po dodaniu b (co zapewnia ze liczba bedzie dodatnia) do wartosci x:\n"
-        "ax mod b = x(2b - z) mod b = (2xb - xz) mod b = -xz mod b = 1";
+        "ax mod b = x(2b - z) mod b = (2xb - xz) mod b = -xz mod b = 1\n\n";
         
     if (!nolog) cout << "Podaj dwie liczby a i b, a program obliczy odwrotnosc modulo b liczby a, jezeli istnieje\n"
         << "Podaj a:\n";
