@@ -7,34 +7,37 @@ using namespace std;
 bool nolog = false, nopause = false, timer = false;
 bool *primes;
 unsigned long long z;
-int endz;
 
-void EliminateDuplicates(int x)
+void EliminateDuplicates(unsigned long long x)
 {
-    bool add_one = x & 1;
     x+=2;
-    x>>=1;
-    int add = x * 6;
-    if (add_one) ++add;
-    else --add;
-
-    cout << add << ' ';
-    add <<= 1;
-
-    int next[2] = {-2*x+add-1, 2*x+add-1};
-    if (add_one) --next[0];
-    else --next[1];
-
-    for (;next[0] < endz; next[0]+=add, next[1]+=add)
+    unsigned long long add, next[2];
+    if (x & 1)
     {
-        //cout << next[0] << ' ' << next[1] << endl;
+        --x;
+        add = x * 6ull + 2ull;
+        next[0] = -x + add - 2ull;
+        next[1] = x + add - 1ull;
+    }
+    else
+    {
+        add = x * 6 - 2;
+        next[0] = -x + add - 1ull;
+        next[1] = x + add - 2ull;
+    }
+    cout << (add >> 1) << ' ';
+
+    for (;next[0] < z; next[0]+=add, next[1]+=add)
+    {
         primes[next[0]] = false;
-        if (next[1] < endz) primes[next[1]] = false;
+        if (next[1] < z) primes[next[1]] = false;
     }
 }
 
 int main(int argc, char *args[])
 {
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
     for (int x = 0; x != argc; ++x)
     {
         if (!strcmp(args[x],"-nolog")) nolog = true;
@@ -61,27 +64,30 @@ int main(int argc, char *args[])
         "posiada dla jednego n dwa elementy, reprezentujace 6n-1 i 6n+1 (p lub q) i indeksowanie zaczyna sie od 0\n"
         "Analogicznie dla 6n+1 mamy indeksy 2(c*(6n+1) + n)-1 i 2(c*(6n+1) - n)\n\n"; 
 
-    if (!nolog) cout << "Podaj liczbe naturalna z:\n";
+    if (!nolog) cout << "Podaj liczbe naturalna z:" << endl;
     cin >> z;
-    cout << endl;
+    if (!nolog) cout << endl;
 
-    if (!nolog) cout << "Wszystkie liczby pierwsze mniejsze od lub rowne " << z << " to :\n";
-    for (int x = 0; x != z && x != 4;++x) cout << x << ' ';
+    if (!nolog) cout << "Wszystkie liczby pierwsze mniejsze od lub rowne " << z << " to :" << endl;
+    for (int x = 2; x != z && x != 4; ++x) cout << x << ' ';
     chrono::time_point<chrono::high_resolution_clock> start, stop;
     if (timer) start = chrono::high_resolution_clock::now();
 
-    primes = new bool[z/3]; //mimo, ze bool normalnie zajmuje 1 bajt, to w tablicy jest to optymalizowane (1 bit)
-    
-    endz = (z+1)/3-1;
-    if ((z%6)==1) ++endz;
-    for (int x = 0; x != endz; ++x) primes[x] = true;
+    ++z;
+    bool notsub = (z%6) > 1;
+    z /= 6; z <<= 1;
+    if (!notsub) --z;
 
-    for (int x = 0; x != endz; ++x)
+    primes = new bool[z]; //mimo, ze bool normalnie zajmuje 1 bajt, to w tablicy jest to optymalizowane (1 bit)
+
+    for (unsigned long long x = 0; x != z; ++x) primes[x] = true;
+
+    for (unsigned long long x = 0; x != z; ++x)
     {
         if (primes[x])
             EliminateDuplicates(x);
         ++x;
-        if (x == endz) break;
+        if (x == z) break;
         if (!primes[x]) continue;
         EliminateDuplicates(x);
     }

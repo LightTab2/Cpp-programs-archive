@@ -2,26 +2,19 @@
 #include <iostream>
 #include <cmath>
 #include <sstream>
-#include <algorithm>
 using std::ofstream, std::stringstream;
+
 ofstream primes("primes.h");
-bool nolog = false, nopause = false;
-int main(int argc, char *args[])
+int main()
 {
-    for (int x = 0; x != argc; ++x)
-    {
-        if (args[x] == "-nolog") nolog = true;
-        else if (args[x] == "-nopause") nopause = true;
-    }
-    //Brak synchronizacji z strumieniami z C
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
     stringstream buffer;
 
     if (!nolog) std::cout << "Podaj gorna granice liczb pierwszych, ktore chcesz otrzymac:\n" << std::flush;
 
-    unsigned lpierwszych = 2; //Najwieksza mozliwa liczba
-    std::cin >> lpierwszych;
+    unsigned long long z = 2; //Najwieksza mozliwa liczba
+    std::cin >> z;
     
     if (!nolog) std::cout << "...\n" << std::flush;
     unsigned cpierwszych = 1; //Licznik elementów w powstałej tablicy

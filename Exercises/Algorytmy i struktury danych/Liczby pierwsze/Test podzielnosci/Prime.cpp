@@ -9,13 +9,15 @@ bool nolog = false, nopause = false, timer = false;
 
 int main(int argc, char *args[])
 {
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
     for (int x = 0; x != argc; ++x)
     {
         if (!strcmp(args[x],"-nolog")) nolog = true;
         else if (!strcmp(args[x], "-nopause")) nopause = true;
         else if (!strcmp(args[x], "-time")) timer = true;
     }
-    unsigned long long n, quantity = 3;
+    unsigned long long n, quantity = 2;
     list<unsigned long long> primes;
     if (!nolog) cout << "Tresc zadania, ktore ten program rozwiazuje to:\n"
         "Znajdz n kolejnych liczb pierwszych.\n"
@@ -29,17 +31,15 @@ int main(int argc, char *args[])
         "sie w zbiorniku 'primes', to liczba nie jest pierwsza. W przeciwnym wypadku sprawdzna liczba jest liczba "
         "pierwsza\n\n";
 
-    if (!nolog) cout << "Podaj liczbe naturalna n:\n";
+    if (!nolog) cout << "Podaj liczbe naturalna n:" << endl;
     cin >> n;
     cout << endl;
     
-    if (!nolog) cout << n << " kolejnych liczb pierwszych to:\n";
+    if (!nolog) cout << n << " kolejnych liczb pierwszych to:" << endl;
     chrono::time_point<chrono::high_resolution_clock> start, stop;
     if (timer) start = chrono::high_resolution_clock::now();
 
-    if (n > 2) cout << 1 << ' ' << 2 << ' ' << 3;  
-    else if (n == 2) cout << 1 << ' ' << 2;
-    else if (n) cout << 1;  
+    for (int x = 2; x != n && x != 4; ++x) cout << x << ' ';
     
     unsigned long long checked = 5;
     bool add_mode = false;
@@ -54,7 +54,7 @@ int main(int argc, char *args[])
         }
         if (it == primes.cend() || *it > square_root) //it is prime
         {
-            cout << ' ' << checked;
+            cout << checked << ' ';
             primes.push_back(checked);
             ++quantity;
         }
