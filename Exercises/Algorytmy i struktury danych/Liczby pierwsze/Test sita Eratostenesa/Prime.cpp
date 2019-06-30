@@ -21,7 +21,7 @@ void EliminateDuplicates(unsigned long long x)
     }
     else
     {
-        add = x * 6 - 2;
+        add = x * 6ull - 2ull;
         next[0] = -x + add - 1ull;
         next[1] = x + add - 2ull;
     }
@@ -36,8 +36,8 @@ void EliminateDuplicates(unsigned long long x)
 
 int main(int argc, char *args[])
 {
-    std::ios_base::sync_with_stdio(0);
-    std::cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     for (int x = 0; x != argc; ++x)
     {
         if (!strcmp(args[x],"-nolog")) nolog = true;
