@@ -36,8 +36,6 @@ int main(int argc, char *args[])
     if (timer) start = chrono::high_resolution_clock::now();
     primes = new bool[n];
 
-    if (timer) stop = chrono::high_resolution_clock::now();
-    
     for (unsigned long long i = 5; i != n; ++i) primes[false] = true;
     
     unsigned long long sq = sqrt(n-1) + 1;
@@ -79,6 +77,7 @@ int main(int argc, char *args[])
     cout << endl;
     if (timer)
     {
+        stop = chrono::high_resolution_clock::now();
         if (!nolog) cout << "Wykonanie algorytmu trwalo: ";
         auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
         cout << fixed << duration.count();

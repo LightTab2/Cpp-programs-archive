@@ -62,10 +62,10 @@ int main(int argc, char *args[])
         add_mode = !add_mode;
     }
 
-    if (timer) stop = chrono::high_resolution_clock::now();
     cout << endl;
     if (timer)
     {
+        stop = chrono::high_resolution_clock::now();
         if (!nolog) cout << "Wykonanie algorytmu trwalo: ";
         auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
         cout << fixed << duration.count();

@@ -16,29 +16,24 @@ int main(int argc, char *args[])
         else if (!strcmp(args[x], "-nopause")) nopause = true;
         else if (!strcmp(args[x], "-time")) timer = true;
     }
+    unsigned long long p, n;
     bool *primes;
-    unsigned long long n;
     if (!nolog) cout << "Tresc zadania, ktore ten program rozwiazuje to:\n"
-        "Znajdz wszystkie liczby w przedziale <1;n>.\n"
+        "Znajdz rozklad liczby p > 1 na iloczyn czynnikow pierwszych.\n"
         "Rozwiazanie:\n"
-        "Tworze i wypisuje sito liniowe, czyli strukture zawierajaca wylacznie liczby pierwsze w taki "
-        "sposob:\n\n"
-        "Algorytm zaczyna od 2 i oznaczmy te liczbe x\n"
-        "Wykluczam ze zbioru wszystkich liczb naturalnych z przedzialu <1;n> wielokrotnosci x:\n"
-        "Usuwam ze zbioru kazda liczbe w niej znajdujaca sie, mnozona przez x, az przekroczy n\n\n";
-
-    if (!nolog) cout << "Podaj liczbe naturalna n:" << endl;
-    cin >> n;
-    ++n;
+        "Jest to algorytm naiwny, wiec najpierw znajduje liczby pierwsze do pierwiastka z p, potem sprawdzam, "
+        "czy dziela one rozpatrywana liczbe\n\n";
+    if (!nolog) cout << "Podaj liczbe naturalna p:" << endl;
+    cin >> p;
     if (!nolog) cout << endl;
 
-    if (!nolog) cout << "Wszystkie liczby pierwsze mniejsze od lub rowne " << n-1 << " to :" << endl;
+    if (!nolog) cout << "Rozklad na czynniki pierwsze liczby " << p << ":" << endl;
     chrono::time_point<chrono::high_resolution_clock> start, stop;
     if (timer) start = chrono::high_resolution_clock::now();
+    n = sqrt(p) + 1;
     primes = new bool[n];
 
     for (unsigned long long x = 0; x != n; ++x) primes[x] = true;
-
     
     for (unsigned long long i = 3; i != n; ++i) primes[i] = true;
     unsigned long long a = 2, b, c;
@@ -56,11 +51,26 @@ int main(int argc, char *args[])
         }
         while (!primes[++a]); //up dla a
     }
+    primes[2] = true;
+    bool first = true;
 
-    cout << 1 << ' ' << 2 << ' ';
-    for (unsigned long long i = 3; i != n; ++i) if(primes[i]) cout << i << " ";
+    for (unsigned long long i = 2; i != n; ++i) 
+        if (primes[i])
+        {
+            unsigned long long count = 0;
+            while (!(p % i))
+            {
+                p /= i;
+                ++count;
+            }
+            if (count > 1) cout << (first ? "" : " * ") << i << '^' << count;
+            else if (count) cout << (first ? "" : " * ") << i;
+            if (first && count) first = false;
+        }
 
+    if (p != 1) cout << (first ? "" : " * ") << p;
     cout << endl;
+
     if (timer)
     {
         stop = chrono::high_resolution_clock::now();
