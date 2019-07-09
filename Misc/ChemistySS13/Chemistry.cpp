@@ -67,10 +67,6 @@ int main()
 				refval[memory] = stoi(val);
 			}*/
 			
-			else
-			{
-				map
-			}
 			out << buf;
 		}
 		file.close();

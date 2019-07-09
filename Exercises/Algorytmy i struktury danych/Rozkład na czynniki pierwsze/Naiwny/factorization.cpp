@@ -32,7 +32,12 @@ int main(int argc, char *args[])
     if (timer) start = chrono::high_resolution_clock::now();
     n = sqrt(p) + 1;
     primes = new bool[n];
-
+    if (p < 4)
+    {
+        cout << p;
+        system("pause");
+        return 0;
+    }
     for (unsigned long long x = 0; x != n; ++x) primes[x] = true;
     
     for (unsigned long long i = 3; i != n; ++i) primes[i] = true;
