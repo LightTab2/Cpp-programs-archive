@@ -39,6 +39,8 @@ bool coprime(unsigned long long a, unsigned long long b)
 
 int main(int argc, char *args[])
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     for (int x = 0; x != argc; ++x)
     {
         if (!strcmp(args[x],"-nolog")) nolog = true;
@@ -51,24 +53,24 @@ int main(int argc, char *args[])
         "W przedziale <a,b> liczb naturalnych wyszukaj wszystkie liczby wzglednie pierwsze z zadana liczba p.\n"
         "Rozwiazanie: wykorzystam algorytm z poprzedniego zadania i wypisze liczby z NWD rownym 1.\n\n";
         
-    if (!nolog) cout << "Podaj liczbe naturalna p:\n";
+    if (!nolog) cout << "Podaj liczbe naturalna p:" << endl;
     cin >> p;
     cout << endl;
 
-    if (!nolog) cout << "Podaj przedzial <a;b>\nPodaj liczbe naturalna a:\n";
+    if (!nolog) cout << "Podaj przedzial <a;b>\nPodaj liczbe naturalna a:" << endl;
 	cin >> interval.min;
     cout << endl;
 
-    if (!nolog) cout << "Podaj liczbe naturalna b:\n";
+    if (!nolog) cout << "Podaj liczbe naturalna b:" << endl;
 	cin >> interval.max;
     while (interval.min > interval.max)
     {
-        if (!nolog) cout << "\nPrzedzial nie moze sie konczyc mniejsza liczba niz sie zaczyna, sproboj ponownie:\n";
+        if (!nolog) cout << "\nPrzedzial nie moze sie konczyc mniejsza liczba niz sie zaczyna, sproboj ponownie:" << endl;
         cin >> interval.max;
     }
 
     //First writing to cout explains how respective algoritms work
-    if (!nolog) cout << "Wszystkie liczby wzglednie pierwsze w przedziale <" << interval.min << ";" << interval.max << "> to: ";
+    if (!nolog) cout << "Wszystkie liczby wzglednie pierwsze z " << p << " w przedziale <" << interval.min << ";" << interval.max << "> to: ";
     chrono::time_point<chrono::high_resolution_clock> start, stop;
     if (timer) start = chrono::high_resolution_clock::now();
         

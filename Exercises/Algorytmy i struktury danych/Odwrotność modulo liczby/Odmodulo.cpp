@@ -36,6 +36,8 @@ bool ExtendedEuclidean(long long a, long long b, long long &x)
 
 int main(int argc, char *args[])
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     for (int x = 0; x != argc; ++x)
     {
         if (!strcmp(args[x],"-nolog")) nolog = true;
@@ -103,11 +105,11 @@ int main(int argc, char *args[])
         "ax mod b = x(2b - z) mod b = (2xb - xz) mod b = -xz mod b = 1\n\n";
         
     if (!nolog) cout << "Podaj dwie liczby a i b, a program obliczy odwrotnosc modulo b liczby a, jezeli istnieje\n"
-        << "Podaj a:\n";
+        "Podaj a:" << endl;
     cin >> a;
     cout << endl;
 
-    if (!nolog) cout << "Podaj b:\n";
+    if (!nolog) cout << "Podaj b:" << endl;
     cin >> b;
     cout << endl;
 
@@ -116,18 +118,19 @@ int main(int argc, char *args[])
     if (timer) start = chrono::high_resolution_clock::now();
     if (ExtendedEuclidean(a,b,x))
     {
-        if (!nolog) cout << "Odwrotnoscia modulo " << b << " liczby " << a << " jest:\n";
-        cout << x << endl;
+        if (!nolog) cout << "Odwrotnoscia modulo " << b << " liczby " << a << " jest: ";
+        cout << x;
     }
     else
     {
         if (!nolog) cout << "Odwrotnoscia modulo " << b << " liczby " << a;
-        cout << " NIE ISTNIEJE\n";
+        cout << " NIE ISTNIEJE";
     }
-    
-    if (timer) stop = chrono::high_resolution_clock::now();
+    cout << endl;
+
     if (timer)
     {
+        stop = chrono::high_resolution_clock::now();
         if (!nolog) cout << "Wykonanie algorytmu trwalo: ";
         auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
         cout << fixed << duration.count();

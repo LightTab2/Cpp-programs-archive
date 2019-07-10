@@ -14,6 +14,8 @@ enum Algorytm
 bool nolog = false, nopause = false, timer = false;
 int main(int argc, char *args[])
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     for (int x = 0; x != argc; ++x)
     {
         if (!strcmp(args[x],"-nolog")) nolog = true;
@@ -42,25 +44,26 @@ int main(int argc, char *args[])
         "c = n^[liczba_zliczen] * a\n\n"
         "P.S.: Algorytmy dziala tak samo dla liczb ujemnych, dlatego praktyczne uzycie tego algorytmu jako funkcji, uzywaloby "
         "wartosci bezwzglednych parametrow, a NWD zawsze byloby liczba dodatnia\n\n";
-    cout << "Wybierz algortym:\n";
+    cout << "Wybierz algortym:" << endl;
     {
         unsigned int alg = static_cast<Algorytm>(4);
         bool display = false;
         while (alg > 3){
-            if (display) cout << "Podano nieprawidlowa liczbe. Sprobuj ponownie:\n";
+            if (display) cout << "Podano nieprawidlowa liczbe. Sprobuj ponownie:" << endl;
             cin >> alg;
             algorithm = static_cast<Algorytm>(alg-1);
             display = true;
         }
     }
 
-    if (!nolog) cout << "Podaj liczbe naturalna a:\n";
+    if (!nolog) cout << "Podaj liczbe naturalna a:" << endl;
 	cin >> a;
     cout << endl;
 
-    if (!nolog) cout << "Podaj liczbe naturalna b:\n";
+    if (!nolog) cout << "Podaj liczbe naturalna b:" << endl;
 	cin >> b;
-    
+    cout << endl;
+
     //First writing to cout explains how respective algoritms work
     if (!nolog) cout << "Najwiekszy wspolny dzielnik liczby " << a << " i " << b << " wynosi: ";
     chrono::time_point<chrono::high_resolution_clock> start, stop;
@@ -108,7 +111,7 @@ default:
     a <<= k;
     if (timer) stop = chrono::high_resolution_clock::now();
         break;
-}
+    }
     cout << a << endl;
     if (timer)
     {
