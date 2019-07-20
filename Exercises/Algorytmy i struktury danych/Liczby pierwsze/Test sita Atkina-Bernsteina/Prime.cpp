@@ -24,7 +24,7 @@ int main(int argc, char *args[])
         "Tworze i wypisuje sito Atkina-Bersteina, ktorego dzialanie nie rozumiem.\n"
         "https://cr.yp.to/papers/primesieves.pdf tutaj znalazlem dowod matematyczny, co mi wcale nie pomoglo "
         "jezeli jestes w stanie to rozczytac to nie wiem co tutaj robisz. Moze jak ogarne liczby zespolone "
-        "i teorie pierscieni to wroce napisac dowod";
+        "i teorie pierscieni to wroce napisac dowod\n\n";
 
     if (!nolog) cout << "Podaj liczbe naturalna n:" << endl;
     cin >> n;

@@ -110,6 +110,7 @@ int main(int argc, char *args[])
         if (count) { cout << (first ? "" : " * ") << lp[x]; first = false; }
         if (count > 1) cout << "^" << count; 
     }
+    if (p != 1)
     rozklad(p);
     cout << endl;
 
