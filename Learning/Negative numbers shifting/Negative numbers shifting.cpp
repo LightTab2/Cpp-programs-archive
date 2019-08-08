@@ -8,13 +8,14 @@ int main(int argc, char *args[])
         if (args[x] == "-nolog") nolog = true;
         else if (args[x] == "-nopause") nopause = true;
     }
-    int i = -2;
+    int i = 0;
     std::cin >> i;
-    for (int n = 1; n != 32; ++n)
+    for (int n = 0; n != 33; ++n)
         std::cout << (i << n) << std::endl;
 
+
     if (!nolog) std::cout << "Now right-shifts\n";
-    for (int n = 1; n != 32; ++n)
+    for (int n = 0; n != 33; ++n)
         std::cout << (i >> n) << std::endl;
     if (!nopause) system("pause");
     return 0;
