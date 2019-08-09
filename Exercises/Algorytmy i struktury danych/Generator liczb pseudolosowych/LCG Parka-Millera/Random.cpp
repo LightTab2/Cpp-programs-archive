@@ -43,9 +43,8 @@ int main(int argc, char *args[])
     if (!nolog) cout << "Wygeneruj n liczb pseudolosowych:\n"
         "Rozwiazanie:\n"
         "Ustanawiam zmienna [X1] zalezna od czasu uruchomienia.\n Tworze funkcje ktora zwraca [Xn] o wzorze "
-        "[Xn] = (a * [X(n-1) + c]) mod m, gdzie wspolczynniki sa dobrane przez profesora Donalda Knutcha "
-        "a = 3141592653, c = 2718281829 i m = 34359738368, co sprawia, że musi minac wiele przebiegow "
-        "(wygenerowan liczb), by liczby zaczely sie powtarzac\n\n";
+        "[Xn] = (a * [X(n-1)]) mod m, gdzie wspolczynniki sa specjalnie dobrane, by okres powtarzania byl"
+        "rowny m-1. Te wspolczynniki to a = 44485709377909 i m = 281474976710656\n\n";
 
     if (!nolog) cout << "Podaj liczbe naturalna n:" << endl;
     cin >> n;
@@ -53,7 +52,7 @@ int main(int argc, char *args[])
     chrono::time_point<chrono::high_resolution_clock> start, stop;
     start = chrono::high_resolution_clock::now();
     unsigned long long seed = time(0);
-    while (--n) cout << (seed = randomLCG(3141592653, 2718281829, 34359738368, seed)) << ' ';
+    while (--n) cout << (seed = randomLCG(44485709377909, 0, 281474976710656, seed)) << ' ';
 
     cout << endl;
     if (timer)
